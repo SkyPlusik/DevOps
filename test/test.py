@@ -1,8 +1,8 @@
 import pytest
 
-from main/calculator import Calculator
+from main.calculator import Calculator
 
-calc = Calculator
+calc = Calculator()
 
 @pytest.mark.parametrize(
     ('a', 'b', 'result'), [
