@@ -2,55 +2,37 @@ import pytest
 
 from main.calculator import Calculator
 
-calc = Calculator()
+def test_add():
+    assert Calculator.add(-3, 2) == -1
+    assert Calculator.add(0, 0) == 0
+    assert Calculator.add(-6, -8) == -14
+    assert Calculator.add(-3, 5) == 2
+    assert Calculator.add(5, 9) == 14
 
-@pytest.mark.parametrize(
-    ('a', 'b', 'result'), [
-        (-3, 2, -1),
-        (0, 0, 0),
-        (-6, -8, -14),
-        (-3, 5, 2),
-        (5, 9, 14),
-    ]
-)
-def test_add(a, b, result):
-    assert calc.add(a, b) == result
 
-@pytest.mark.parametrize(
-    ('a', 'b', 'result'), [
-        (-3, 2, -5),
-        (0, 0, 0),
-        (-6, -8, 2),
-        (6, 5, 1),
-        (5, 9, -4),
-    ]
-)
-def test_sub(a, b, result):
-    assert calc.sub(a, b) == result
+def test_sub():
+    assert Calculator.sub(-3, 2) == -5
+    assert Calculator.sub(0, 0) == 0
+    assert Calculator.sub(-6, -8) == 2
+    assert Calculator.sub(6, 5) == 1
+    assert Calculator.sub(5, 9) == -4
 
-@pytest.mark.parametrize(
-    ('a', 'b', 'result'), [
-        (-3, 2, -6),
-        (0, 0, 0),
-        (4, 2, 8),
-        (-6, -5, 30),
-        (5, -1, -5),
-    ]
-)
-def test_multy(a, b, result):
-    assert calc.multy(a, b) == result
 
-@pytest.mark.parametrize(
-    ('a', 'b', 'result'), [
-        (-6, 2, -3),
-        (8, 2, 4),
-        (30, -5, -6),
-        (-5, -1, 5),
-    ]
-)
-def test_div(a, b, result):
-    assert calc.div(a, b) == result
+def test_multy():
+    assert Calculator.multy(-3, 2) == -6
+    assert Calculator.multy(0, 0) == 0
+    assert Calculator.multy(4, 2) == 8
+    assert Calculator.multy(-6, -5) == 30
+    assert Calculator.multy(5, -1) == -5
+
+
+def test_div():
+    assert Calculator.div(-6, 2) == -3
+    assert Calculator.div(8, 2) == 4
+    assert Calculator.div(30, -5) == -6
+    assert Calculator.div(-5, -1) == 5
+
 
 def test_div_fail():
     with pytest.raises(ZeroDivisionError):
-        calc.div(6, 0)
+        Calculator.div(6, 0)
