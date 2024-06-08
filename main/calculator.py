@@ -1,23 +1,19 @@
 class Calculator:
     def add(a, b):
-        result = 0
-        # выполни сложение
+        result = a + b
         return result
 
     def sub(a, b):
-        result = 0
-        # выполни вычитание
+        result = a - b
         return result
 
     def multy(a, b):
-        result = 0
-        # выполни умножение
+        result = a * b
         return result
 
     def div(a, b):
-        result = 0
-        # выполни деление (с обработкой случая, когда b = 0)
         if b != 0:
+            result = a / b
             return result
         else:
             raise ZeroDivisionError
